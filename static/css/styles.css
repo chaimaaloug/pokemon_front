@@ -1,6 +1,6 @@
 
 body {
-    background-image: url('/media/background.png');
+    background: url('../media/background.png') no-repeat center center fixed;
     background-size: cover;
 }
 
