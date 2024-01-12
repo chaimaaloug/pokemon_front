@@ -1,0 +1,10 @@
+
+body {
+    background-image: url('/media/background.png');
+    background-size: cover;
+}
+
+.styled-title {
+    color: red;
+    font-size: 34px;
+}
