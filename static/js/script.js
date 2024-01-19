@@ -9,6 +9,17 @@ async function getPokemonTypes() {
     }
 }
 
+async function getPokemonNames() {
+    try {
+        const response = await axios.get('http://localhost:8000/get_pokemon_names');
+        let types = response.data.pokemon_names;
+        addOptionsToDropdown(types, 'pokemonType1');
+        addOptionsToDropdown(types, 'pokemonType2');
+    } catch (error) {
+        console.error('Erreur lors de la récupération des types de Pokémon', error);
+    }
+}
+
 function addOptionsToDropdown(options, dropdownId) {
     let dropdown = document.getElementById(dropdownId);
     dropdown.innerHTML = '';
@@ -42,4 +53,17 @@ async function validerPokemon() {
     }
 }
 
+function validateForm() {
+    let selectedType1 = document.getElementById('pokemonType1').value;
+    let selectedType2 = document.getElementById('pokemonType2').value;
+
+    if (!selectedType1 || !selectedType2) {
+        alert('Veuillez sélectionner les deux types de Pokémon avant de valider.');
+        return false;
+    }
+
+    return true;
+}
+
 getPokemonTypes();
+getPokemonNames();
