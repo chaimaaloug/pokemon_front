@@ -22,34 +22,44 @@ async function getPokemonNames() {
 
 function addOptionsToDropdown(options, dropdownId) {
     let dropdown = document.getElementById(dropdownId);
-    dropdown.innerHTML = '';
+    if (dropdown) {
+        // L'objet `dropdown` existe, on peut y ajouter des options
+        dropdown.innerHTML = '';
 
-    let placeholderOption = document.createElement('option');
-    placeholderOption.value = '';
-    placeholderOption.text = '--- Sélectionnez un type ---';
-    dropdown.appendChild(placeholderOption);
+        let placeholderOption = document.createElement('option');
+        placeholderOption.value = '';
+        placeholderOption.text = '--- Sélectionnez un type ---';
+        dropdown.appendChild(placeholderOption);
 
-    for (let option of options) {
-        let optionElement = document.createElement('option');
-        optionElement.value = option;
-        optionElement.textContent = option;
-        dropdown.appendChild(optionElement);
+        for (let option of options) {
+            let optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+            dropdown.appendChild(optionElement);
+        }
     }
 }
 
-async function validerPokemon() {
+async function validerPokemon(event) {
     try {
+        event.preventDefault();
+
         let selectedType1 = document.getElementById('pokemonType1').value;
         let selectedType2 = document.getElementById('pokemonType2').value;
 
-        const response = await axios.post('http://localhost:8000/send_selected_pokemons', {
+        const response = await axios.post('http://localhost:8000/send_prediction_result', {
             type1: selectedType1,
             type2: selectedType2
         });
-        console.log('Selected values:', selectedType1, selectedType2);
-        console.log('Réponse du backend:', response.data);
+
+        let resultMessage = response.data.result;
+        let predictionURL = window.location.origin + '/polls/prediction/';
+        window.location.href = `${predictionURL}?result=${encodeURIComponent(resultMessage)}`;
+
+        return true;
     } catch (error) {
         console.error('Erreur lors de l\'envoi des données au backend', error);
+        return false;
     }
 }
 
@@ -61,7 +71,6 @@ function validateForm() {
         alert('Veuillez sélectionner les deux types de Pokémon avant de valider.');
         return false;
     }
-
     return true;
 }
 

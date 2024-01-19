@@ -3,8 +3,8 @@
 {% block content %}
     <h2>Résultats de la Prédiction</h2>
     
-    {% if result %}
-        <p>Résultat : {{ result }}</p>
+    {% if request.GET.result %}
+        <p>Résultat : {{ request.GET.result }}</p>
     {% else %}
         <p>Aucune prédiction n'a été faite. Veuillez retourner à la page d'accueil et faire une prédiction.</p>
     {% endif %}
