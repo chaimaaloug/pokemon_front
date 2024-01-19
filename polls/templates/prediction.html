@@ -1,5 +1,13 @@
 {% extends 'global.html' %}
 
 {% block content %}
-    <h2>Prediction Results</h2>
+    <h2>Résultats de la Prédiction</h2>
+    
+    {% if result %}
+        <p>Résultat : {{ result }}</p>
+    {% else %}
+        <p>Aucune prédiction n'a été faite. Veuillez retourner à la page d'accueil et faire une prédiction.</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}">Retour à la page d'accueil</a>
 {% endblock %}
