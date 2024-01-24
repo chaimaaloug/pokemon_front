@@ -1,13 +1,18 @@
 {% extends 'global.html' %}
 
 {% block content %}
-    <h2>Résultats de la Prédiction</h2>
+    <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="container py-4 rounded" style="background-color: white;">
+            <div class="d-flex align-items-center justify-content-center row mb-3">
+                <h2>Résultats de la Prédiction</h2>
     
     {% if request.GET.result %}
         <p>Résultat : {{ request.GET.result }}</p>
     {% else %}
         <p>Aucune prédiction n'a été faite. Veuillez retourner à la page d'accueil et faire une prédiction.</p>
     {% endif %}
-
+            </div>
+        </div>
+    </div>
     <a href="{% url 'home' %}">Retour à la page d'accueil</a>
 {% endblock %}

@@ -2,13 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-    return render(request, 'home.html', {'title': 'Pokémon'})
-
-from django.shortcuts import render
-from django.http import HttpResponse
-
-def home(request):
-    return render(request, 'home.html', {'title': 'Pokémon'})
+    result = request.GET.get('result', '')
+    return render(request, 'home.html', {'result': result, 'title': 'Pokémon'})
 
 def prediction(request):
     result = request.GET.get('result', '')
