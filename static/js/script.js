@@ -67,6 +67,54 @@ function addOptionsToDropdown(options, dropdownId, detailsContainerId) {
     }
 }
 
+function createStatsChart(details, chartId) {
+    const statsData = {
+        HP: details.HP,
+        Attack: details.Attack,
+        Defense: details.Defense,
+        SpecialAttack: details['Special Attack'],
+        SpecialDefense: details['Special Defense'],
+        Speed: details.Speed,
+    };
+
+    const ctx = document.getElementById(chartId).getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(statsData),
+            datasets: [{
+                label: 'Stats',
+                data: Object.values(statsData),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+
 async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pokemonContainerId) {
     try {
         const details = await getPokemonDetails(pokemonName);
@@ -89,10 +137,16 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
                             </h5>
                             <p class="my-4">${details.Description}</p>
                         </div>
+                        <div class="col-md-12 mb-3">
+                            <canvas id="pokemonStatsChart" width="400" height="200"></canvas>
+                        </div>
                     </div>`;
 
                 detailsContainer.innerHTML = detailsHTML;
                 pokemonContainer.appendChild(detailsContainer);
+
+                // Appeler la fonction pour créer le graphique
+                createStatsChart(details, 'pokemonStatsChart');
             }
         } else {
             console.error('Erreur lors de la récupération des détails du Pokémon');
@@ -101,6 +155,7 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
         console.error('Erreur lors de la récupération des détails du Pokémon', error);
     }
 }
+
 
 document.getElementById('pokemonType1').addEventListener('change', (event) => {
     getPokemonDetailsAndUpdateUI(event.target.value, 'pokemonDetails');
