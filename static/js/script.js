@@ -106,7 +106,10 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
                                 <span class="text-dark d-block font-italic">${(details.Weight / 10)} kg</span>
                             </div>
                         </div>
-                        <div class="">
+                        <div>
+                            <img src="http://localhost:8000/get_stats_radar_chart/${details.Name}" class="img-fluid">
+                        </div>
+                        <div>
                             <img src="http://localhost:8000/get_stats_chart/${details.Name}" class="img-fluid">
                         </div>
                     </div>`;
