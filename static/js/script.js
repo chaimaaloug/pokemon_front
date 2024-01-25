@@ -81,7 +81,7 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
 
                 let detailsHTML = `
                     <div class="card pt-4" style="padding-right:0px;padding-left:0px;">
-                        <div class="d-flex mb-2">
+                        <div class="d-flex mx-4 my-2 mb-2">
                             <div class="mr-3">
                                 <img src="${imageUrl}">
                             </div>
