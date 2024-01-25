@@ -2,12 +2,9 @@
 {% load static %}
 
 {% block content %}
-    <div class="container-fluid py-4 bg-light">
-        <div class="container py-4 p-4 rounded">
+    <div class="container-fluid py-4">
+        <div class="container py-4 p-4 rounded" style="background-color: white;">
             <div class="row">
-                <div class="col-md-12 text-center mb-4">
-                    <img src="{% static 'media/pokemons.png' %}" width="30%" alt="Pokemons">
-                </div>
                 <form onsubmit="validerPokemon(event)" class="col-md-12">
                     {% csrf_token %}
                     <div class="row mb-3">
