@@ -77,13 +77,33 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
 
             if (detailsContainer && pokemonContainer) {
                 const imageUrl = details.imageUrl || '';
+                const type2 = details.Type2 && details.Type2 ? ` / ${details.Type2}` : "";
 
                 let detailsHTML = `
-                    <div class="c-pokedex-fiche card">
+                    <div class="c-pokedex-fiche card pt-4">
                         <h5 class="c-pokedex-fiche__name">${details.Name.charAt(0).toUpperCase() + details.Name.slice(1)}</h5>
-                        <div class="c-pokedex-fiche__image-wrapper">
-                            <div class="c-pokedex-fiche__image">
-                                <img src="${imageUrl}" class="img-fluid" id="pokemon-image">
+                        <div class="d-flex mx-4 my-2 mb-2">
+                            <div class="c-pokedex-fiche__image-wrapper">
+                                <div class="c-pokedex-fiche__image">
+                                    <img src="${imageUrl}" class="img-fluid" id="pokemon-image">
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h6 class="text-dark">${details.Description}</h6>
+                            </div>
+                        </div>
+                        <div class="row mx-4 my-2 py-3" style="background-color: #30a7d7; border-radius: 5px;">
+                            <div class="col-8">
+                                <span class="text-white d-block font-weight-bold" style="font-size: 18px;">Capacités:</span>
+                                <span class="text-dark d-block text-capitalize font-italic">${details.Abilities}</span>
+                                <span class="text-white d-block font-weight-bold" style="font-size: 18px;">Type:</span>
+                                <span class="text-dark d-block text-capitalize font-italic">${details.Type1}${type2}</span>
+                            </div>
+                            <div class="col-4">
+                                <span class="text-white d-block font-weight-bold" style="font-size: 18px;">Taille: </span>
+                                <span class="text-dark d-block font-italic">${(details.Height) / 10} m</span>
+                                <span class="text-white d-block font-weight-bold" style="font-size: 18px;">Poids: </span>
+                                <span class="text-dark d-block font-italic">${(details.Weight / 10)} kg</span>
                             </div>
                         </div>
                         <p class="c-pokedex-fiche__description">${details.Description}</p>
@@ -91,7 +111,6 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
                             <img src="http://localhost:8000/get_stats_chart/${details.Name}" class="img-fluid">
                         </div>
                     </div>`;
-
                 detailsContainer.innerHTML = detailsHTML;
                 pokemonContainer.appendChild(detailsContainer);
             }
