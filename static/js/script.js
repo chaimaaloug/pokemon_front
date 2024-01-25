@@ -79,19 +79,17 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
                 const imageUrl = details.imageUrl || '';
 
                 let detailsHTML = `
-                    <div class="card">
-                        <div class="">
-                            <img src="${imageUrl}" class="img-fluid">
+                    <div class="c-pokedex-fiche card">
+                        <h5 class="c-pokedex-fiche__name">${details.Name.charAt(0).toUpperCase() + details.Name.slice(1)}</h5>
+                        <div class="c-pokedex-fiche__image-wrapper">
+                            <div class="c-pokedex-fiche__image">
+                                <img src="${imageUrl}" class="img-fluid" id="pokemon-image">
+                            </div>
                         </div>
-                        <div class="text-left p-2">
-                            <h5>
-                                <span class="badge badge-primary">${details.Name.charAt(0).toUpperCase() + details.Name.slice(1)}</span>
-                            </h5>
-                            <p class="my-4">${details.Description}</p>
-                        </div>
+                        <p class="c-pokedex-fiche__description">${details.Description}</p>
                         <div class="">
-                        <img src="http://localhost:8000/get_stats_chart/${details.Name}" class="img-fluid">
-                    </div>
+                            <img src="http://localhost:8000/get_stats_chart/${details.Name}" class="img-fluid">
+                        </div>
                     </div>`;
 
                 detailsContainer.innerHTML = detailsHTML;

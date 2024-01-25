@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
     background: url('../media/background.png') no-repeat center center fixed;
     background-size: cover;
@@ -7,3 +9,103 @@ body {
 button {
     margin-top: 20px;
 }
+
+.c-pokedex-fiche__wrapper {
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+.c-pokedex-fiche {
+    padding: 24px 16px;
+    animation: slideInRight 1s ease-in-out forwards, fade 1s ease-in-out forwards;
+    position: relative;
+    right: -100%;
+    border-radius: 0 24px;
+    border: 5px solid #000;
+    box-shadow: 15px 15px 0px red;
+}
+
+#pokemonContainer1 .c-pokedex-fiche {
+    left: -100%; 
+    right: 0;
+    animation: slideInLeft 1s ease-in-out forwards, fade 1s ease-in-out forwards;
+}
+
+.c-pokedex-fiche__name {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.c-pokedex-fiche__description {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 14px;
+}
+
+.c-pokedex-fiche__image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-pokedex-fiche__image {
+    max-width: 250px;
+    width: 100%;
+    animation: moveSprite 2s linear infinite;
+}
+
+.c-pokedex-fiche__image img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.5));
+}
+
+
+#pokemonContainer1 .c-pokedex-fiche__image {
+    transform: scaleX(-1);
+    animation: moveSprite1 2s linear infinite;
+}
+
+/* Animation */
+
+@keyframes moveSprite1 {
+    0%, 100% { transform: scaleX(-1) translateY(0) rotate(0deg); }
+    25% { transform: scaleX(-1) translateY(-5%) translateX(20px) rotate(5deg); }
+    50% { transform: scaleX(-1) translateY(0) rotate(0deg); }
+    75% { transform: scaleX(-1) translateY(-5%) translateX(-20px) rotate(-5deg); }    
+}
+
+
+@keyframes moveSprite {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5%) translateX(20px) rotate(5deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(-5%) translateX(-20px) rotate(-5deg); }    
+}
+
+  @keyframes slideInLeft {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 0;
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      right: -100%;
+    }
+    100% {
+      right: 0;
+    }
+  }
+  
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
