@@ -82,14 +82,9 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
                 let detailsHTML = `
                     <div class="c-pokedex-fiche card pt-4">
                         <h5 class="c-pokedex-fiche__name">${details.Name.charAt(0).toUpperCase() + details.Name.slice(1)}</h5>
-                        <div class="d-flex mx-4 my-2 mb-2">
-                            <div class="c-pokedex-fiche__image-wrapper">
-                                <div class="c-pokedex-fiche__image">
-                                    <img src="${imageUrl}" class="img-fluid" id="pokemon-image">
-                                </div>
-                            </div>
-                            <div class="text-left">
-                                <h6 class="text-dark">${details.Description}</h6>
+                        <div class="c-pokedex-fiche__image-wrapper">
+                            <div class="c-pokedex-fiche__image">
+                                <img src="${imageUrl}" id="pokemon-image">
                             </div>
                         </div>
                         <div class="row mx-4 my-2 py-3" style="background-color: #30a7d7; border-radius: 5px;">
