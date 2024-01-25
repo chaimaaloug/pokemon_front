@@ -103,6 +103,10 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
                         </div>
                         <p class="c-pokedex-fiche__description">${details.Description}</p>
                         <div class="">
+                        <div>
+                            <img src="http://localhost:8000/get_stats_radar_chart/${details.Name}" class="img-fluid">
+                        </div>
+                        <div>
                             <img src="http://localhost:8000/get_stats_chart/${details.Name}" class="img-fluid">
                         </div>
                     </div>`;
