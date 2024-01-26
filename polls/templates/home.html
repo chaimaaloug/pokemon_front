@@ -2,33 +2,30 @@
 {% load static %}
 
 {% block content %}
-    <div class="container-fluid py-4">
-        <div class="container py-5 p-4 rounded" style="background-color: white;">
-            <div class="row">
-                <form onsubmit="validerPokemon(event)" class="col-md-12">
-                    {% csrf_token %}
-                    <div class="row mb-3">
-                        <div class="col-md-6 mb-3">
-                            <select class="form-control mb-3" id="pokemonType1" onchange="getPokemonDetailsAndUpdateUI(this.value, 'pokemonDetails1', 'pokemonContainer1')"></select>
-                            <div id="pokemonContainer1"></div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <select class="form-control mb-3" id="pokemonType2" onchange="getPokemonDetailsAndUpdateUI(this.value, 'pokemonDetails2', 'pokemonContainer2')"></select>
-                            <div id="pokemonContainer2"></div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <div class="c-pokedex-fiche__wrapper col-md-12 mb-3" id="pokemonDetails1">
-                            </div>
-                            <div class="c-pokedex-fiche__wrapper col-md-12 mb-3" id="pokemonDetails2">
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-3 d-flex align-items-center justify-content-center">
-                            <button type="submit" class="btn btn-info">Valider</button>
-                        </div>
-                        <div id="predictionResult" class="col-md-12 mb-3 prediction-result-container"></div>
+    <div class="c-container py-5 p-4 rounded" style="background-color: white;">
+        <div class="row">
+            <form onsubmit="validerPokemon(event)" class="col-md-12">
+                <h4 class="c-pokedex__title">Choisissez vos pokémons</h4>
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3">
+                        <select class="c-pokedex__form form-control mb-3" id="pokemonType1" onchange="getPokemonDetailsAndUpdateUI(this.value, 'pokemonDetails1', 'pokemonContainer1')"></select>
+                        <div id="pokemonContainer1"></div>
                     </div>
-                </form>
-            </div>
+                    <div class="col-md-6 mb-3">
+                        <select class="c-pokedex__form form-control mb-3" id="pokemonType2" onchange="getPokemonDetailsAndUpdateUI(this.value, 'pokemonDetails2', 'pokemonContainer2')"></select>
+                        <div id="pokemonContainer2"></div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <div class="c-pokedex-fiche__wrapper col-md-12 mb-3" id="pokemonDetails1"></div>
+                        <div class="c-pokedex-fiche__wrapper col-md-12 mb-3" id="pokemonDetails2"></div>
+                    </div>
+                    <div class="col-md-12 mb-3 d-flex align-items-center justify-content-center">
+                        <button type="submit" class="c-button-fight">fight !</button>
+                    </div>
+                    <div id="predictionResult" class="c-prediction-result"></div>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock %}

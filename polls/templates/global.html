@@ -14,16 +14,16 @@
 
 </head>
 <body class="custom-bg">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="c-navbar navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="{% static 'media/icon.png' %}" width="30" height="40" class="d-inline-block align-text-top" alt="Logo">
-                <span class="mx-3">Pokémon</span>
+                <span class="c-navbar-title mx-3">Pokémon Battle</span>
             </a>
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="c-container mt-5 pb-5" style="padding-top: 96px;">
         {% block content %}{% endblock %}
     </div>
 

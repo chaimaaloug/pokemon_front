@@ -2,17 +2,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
+  position: relative;
     background: url('../media/background.png') no-repeat center center fixed;
     background-size: cover;
+    min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 button {
     margin-top: 20px;
 }
 
+.c-container {
+    position: relative;
+    max-width: calc(1360px + 32px);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.c-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+  z-index: 2;
+}
+
+.c-navbar-title {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 14px;
+}
+
+.c-pokedex__title {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+
+.c-pokedex__form {
+  font-size: 20px;
+  color: #000 !important;
+  border: 1px solid #000;
+  border-radius: 0px 10px 0px 10px;
+} 
+
+.c-pokedex__form:hover {
+  border: 1px solid red;
+} 
+
 .c-pokedex-fiche__wrapper {
+    display: block;
     overflow: hidden;
     padding-bottom: 15px;
+    padding-top: 32px;
+}
+
+.c-pokedex-fiche__wrapper:empty {
+  display: none;
 }
 
 .c-pokedex-fiche {
@@ -25,6 +81,10 @@ button {
     box-shadow: 15px 15px 0px red;
 }
 
+.c-pokedex-fiche:hover {
+  border: 5px solid red;
+}
+
 #pokemonContainer1 .c-pokedex-fiche {
     left: -100%; 
     right: 0;
@@ -35,6 +95,47 @@ button {
     font-family: "Press Start 2P", system-ui;
     font-size: 32px;
     font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.c-pokedex-fiche__types {
+    display : flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.c-pokedex-fiche__types span {
+    background-color: #A9A9A9;
+    color: white;
+    box-shadow: 4px 4px 0px #696969;
+    border-radius: 10px;
+    padding: 12px;
+    font-family: "Press Start 2P", system-ui;
+    text-transform: capitalize;
+}
+
+.c-pokedex-fiche__types span:empty {
+  display: none;
+}
+
+.c-pokedex-fiche__infos {
+  background-color: #30a7d7;
+  border-radius: 5px;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 14px;
+  padding: 16px;
+}
+
+.c-pokedex-fiche__title {
+  display: inline;
+  width: fit-content;
+  background-color: #30a7d7;
+  color: white;
+  padding: 12px 32px 12px 12px;
+  border-radius: 0 0 16px 0;
+  font-size: 16px;
+  font-family: "Press Start 2P", system-ui;
+  margin-top: 32px;
 }
 
 .c-pokedex-fiche__description {
@@ -46,6 +147,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 32px 0 32px 0;
 }
 
 .c-pokedex-fiche__image {
@@ -66,7 +168,79 @@ button {
     animation: moveSprite1 2s linear infinite;
 }
 
+.c-button-fight {
+  padding: 24px;
+  background: #ed2b2b;
+  border: 3px solid #FFA07A;
+  color: white;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 24px;
+  text-transform: uppercase;
+  border-radius: 24px;
+}
+
+.c-button-fight:hover {
+  background: #FF0000;
+  animation: vibrate 0.3s ease infinite;
+}
+
+.c-prediction-result {
+  position: relative;
+  width: 100%;
+  border: 5px solid #000;
+  padding: 24px;
+  margin: 32px 24px 64px 24px;
+  border-radius: 16px;
+  font-family: "Press Start 2P", system-ui;
+  animation: fade 1s ease-in-out forwards;
+}
+
+.c-prediction-result::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  width: 90px;
+  height: 150px;
+  background-image: url(../media/prof.png);
+  background-size: cover;
+}
+
+.c-prediction-result::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 45px;
+  height: 45px;
+  background-image: url(../media/Ruban_Maître_Sinnoh.png);
+  background-size: cover;
+}
+
+.c-prediction-result p {
+  margin: 0;
+}
+
+.c-prediction-result:empty {
+  display: none;
+}
+
 /* Animation */
+
+@keyframes vibrate {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
 
 @keyframes moveSprite1 {
     0%, 100% { transform: scaleX(-1) translateY(0) rotate(0deg); }

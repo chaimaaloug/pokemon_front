@@ -82,27 +82,36 @@ async function getPokemonDetailsAndUpdateUI(pokemonName, detailsContainerId, pok
                 let detailsHTML = `
                     <div class="c-pokedex-fiche card pt-4">
                         <h5 class="c-pokedex-fiche__name">${details.Name.charAt(0).toUpperCase() + details.Name.slice(1)}</h5>
+                        <div class="c-pokedex-fiche__types">
+                            <span>${details.Type1}</span>
+                            <span>${details.Type2}</span>
+                        </div>
                         <div class="c-pokedex-fiche__image-wrapper">
                             <div class="c-pokedex-fiche__image">
                                 <img src="${imageUrl}" id="pokemon-image">
                             </div>
                         </div>
-                        <div class="row mx-4 my-2 py-3" style="background-color: #30a7d7; border-radius: 5px;">
-                            <div class="col-8">
-                                <span class="text-white d-block font-weight-bold" style="font-size: 18px;">Capacités:</span>
-                                <span class="text-dark d-block text-capitalize font-italic">${details.Abilities}</span>
-                                <span class="text-white d-block font-weight-bold" style="font-size: 18px;">Type:</span>
-                                <span class="text-dark d-block text-capitalize font-italic">${details.Type1}${type2}</span>
+                        <div class="c-pokedex-fiche__infos">
+                            <div class="row mb-2">
+                                <div class="col-12">
+                                    <span class="text-white d-block font-weight-bold" style="font-size: 16px;">Capacités:</span>
+                                    <span class="text-dark d-block text-capitalize font-italic">${details.Abilities}</span>
+                                </div>
                             </div>
-                            <div class="col-4">
-                                <span class="text-white d-block font-weight-bold" style="font-size: 18px;">Taille: </span>
-                                <span class="text-dark d-block font-italic">${(details.Height) / 10} m</span>
-                                <span class="text-white d-block font-weight-bold" style="font-size: 18px;">Poids: </span>
-                                <span class="text-dark d-block font-italic">${(details.Weight / 10)} kg</span>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="text-white d-block font-weight-bold" style="font-size: 16px;">Taille: </span>
+                                    <span class="text-dark d-block font-italic">${(details.Height) / 10} m</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="text-white d-block font-weight-bold" style="font-size: 16px;">Poids: </span>
+                                    <span class="text-dark d-block font-italic">${(details.Weight / 10)} kg</span>
+                                </div>
                             </div>
                         </div>
+                        <p class="c-pokedex-fiche__title">Description</p>
                         <p class="c-pokedex-fiche__description">${details.Description}</p>
-                        <div class="">
+                        <p class="c-pokedex-fiche__title">Statistiques</p>
                         <div>
                             <img src="http://localhost:8000/get_stats_radar_chart/${details.Name}" class="img-fluid">
                         </div>
